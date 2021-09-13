@@ -66,217 +66,239 @@
 <!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
+        
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/croissants_450x300.jpg"
-                         th:src="@{images/croissants_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Croissants</h5>
-                            <!-- Product price-->
-                            6 pcs x 5€00
-                        </div>
+            <div th:each="product : ${products}">
+                <!-- Product for loop -->
+                
+                <img class="card-img-top" src="image of the product"
+                     th:src="@{${product.imageAddress}}"/>
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder" th:text="${{product.label}}">Label of product</h5>
+                        <!-- Product price-->
+                        <p th:text="${{product.price}}">price of product</p>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                </div>
+                <!--&lt;!&ndash; Product image&ndash;&gt;
+                <img class="card-img-top" src="../static/images/croissants_450x300.jpg"
+                     th:src="@{images/croissants_450x300.jpg}"/>
+                &lt;!&ndash; Product details&ndash;&gt;
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        &lt;!&ndash; Product name&ndash;&gt;
+                        <h5 class="fw-bolder">Croissants</h5>
+                        &lt;!&ndash; Product price&ndash;&gt;
+                        6 pcs x 5€00
+                    </div>
+                </div>-->
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
                     </div>
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/painsauchoco_450x300.jpg"
-                         th:src="@{images/painsauchoco_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Pains au chocolat</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
+                    <!--</div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Sale badge&ndash;&gt;
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                             </div>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">6€00</span>
-                            6 pcs x 5€00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/viennoiseries_assorties_450x300.jpg"
-                         th:src="@{images/viennoiseries_assorties_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Viennoiseries variety box</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">10€00</span>
-                            8€50
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/pastry_variety_box_450x300.jpg"
-                         th:src="@{images/pastry_variety_box_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Pastries variety box</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/painsauchoco_450x300.jpg"
+                                 th:src="@{images/painsauchoco_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Pains au chocolat</h5>
+                                    &lt;!&ndash; Product reviews&ndash;&gt;
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    <span class="text-muted text-decoration-line-through">6€00</span>
+                                    6 pcs x 5€00
+                                </div>
                             </div>
-                            <!-- Product price-->
-                            20€00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/cupcakes-de-noel_450x300.jpg"
-                         th:src="@{images/cupcakes-de-noel_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Cupcakes</h5>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">$6.50</span>
-                            5€00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/baguette_tropezienne_450x300.jpg"
-                         th:src="@{images/baguette_tropezienne_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Baguette tropezienne</h5>
-                            <!-- Product price-->
-                            25€00
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Sale badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                    </div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/baguettes_450x300.jpg"
-                         th:src="@{images/baguettes_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Baguettes</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
                             </div>
-                            <!-- Product price-->
-                            <span class="text-muted text-decoration-line-through">1€50</span>
-                            1€20
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="../static/images/confitures_450x300.jpg"
-                         th:src="@{images/confitures_450x300.jpg}"/>
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">Confitures</h5>
-                            <!-- Product reviews-->
-                            <div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Sale badge&ndash;&gt;
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                             </div>
-                            <!-- Product price-->
-                            7€00
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/viennoiseries_assorties_450x300.jpg"
+                                 th:src="@{images/viennoiseries_assorties_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Viennoiseries variety box</h5>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    <span class="text-muted text-decoration-line-through">10€00</span>
+                                    8€50
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/pastry_variety_box_450x300.jpg"
+                                 th:src="@{images/pastry_variety_box_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Pastries variety box</h5>
+                                    &lt;!&ndash; Product reviews&ndash;&gt;
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    20€00
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Sale badge&ndash;&gt;
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                            </div>
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/cupcakes-de-noel_450x300.jpg"
+                                 th:src="@{images/cupcakes-de-noel_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Cupcakes</h5>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    <span class="text-muted text-decoration-line-through">$6.50</span>
+                                    5€00
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/baguette_tropezienne_450x300.jpg"
+                                 th:src="@{images/baguette_tropezienne_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Baguette tropezienne</h5>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    25€00
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Sale badge&ndash;&gt;
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                            </div>
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/baguettes_450x300.jpg"
+                                 th:src="@{images/baguettes_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Baguettes</h5>
+                                    &lt;!&ndash; Product reviews&ndash;&gt;
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    <span class="text-muted text-decoration-line-through">1€50</span>
+                                    1€20
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            &lt;!&ndash; Product image&ndash;&gt;
+                            <img class="card-img-top" src="../static/images/confitures_450x300.jpg"
+                                 th:src="@{images/confitures_450x300.jpg}"/>
+                            &lt;!&ndash; Product details&ndash;&gt;
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder">Confitures</h5>
+                                    &lt;!&ndash; Product reviews&ndash;&gt;
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                        <div class="bi-star-fill"></div>
+                                    </div>
+                                    &lt;!&ndash; Product price&ndash;&gt;
+                                    7€00
+                                </div>
+                            </div>
+                            &lt;!&ndash; Product actions&ndash;&gt;
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                                </div>
+                            </div>
+                        </div>-->
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 <!-- Footer-->

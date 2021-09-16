@@ -1,6 +1,6 @@
 package com.elofaro.bakeryandpastry.controller;
 
-import com.elofaro.bakeryandpastry.dao.ProductDAO;
+import com.elofaro.bakeryandpastry.DAO.ProductDAO;
 import com.elofaro.bakeryandpastry.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

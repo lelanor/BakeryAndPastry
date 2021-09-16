@@ -70,7 +70,6 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div th:each="product : ${products}">
                 <!-- Product for loop -->
-                
                 <img class="card-img-top" src="image of the product"
                      th:src="@{${product.imageAddress}}"/>
                 <div class="card-body p-4">

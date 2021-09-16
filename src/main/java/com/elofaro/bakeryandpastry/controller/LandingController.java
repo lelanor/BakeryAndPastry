@@ -31,6 +31,6 @@ public class LandingController {
 
         model.addAttribute("products", productList);
 
-        return "landing";
+        return "landingTemplate";
     }
 }

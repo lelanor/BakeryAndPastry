@@ -20,25 +20,35 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image_address", length = 100)
-    private String imageAddress;
+    @Column(name = "image_catalog", length = 100)
+    private String imageCatalog;
+
+    @Column(name = "image_landing", length = 100)
+    private String imageLanding;
+
+    @Column(name = "image_order", length = 100)
+    private String imageOrder;
+
 
     public Product() {
     }
 
-    public Product(String label, double price, String description, String imageAddress) {
+    public Product(String label, double price, String description,
+                   String imageCatalog, String imageLanding, String imageOrder) {
         this.label = label;
         this.price = price;
         this.description = description;
-        this.imageAddress = imageAddress;
+        this.imageCatalog = imageCatalog;
+        this.imageLanding = imageLanding;
+        this.imageOrder = imageOrder;
     }
 
-    public String getImageAddress() {
-        return imageAddress;
+    public String getImageCatalog() {
+        return imageCatalog;
     }
 
-    public void setImageAddress(String imageAddress) {
-        this.imageAddress = imageAddress;
+    public void setImageCatalog(String imageAddress) {
+        this.imageCatalog = imageAddress;
     }
 
     public String getDescription() {
@@ -71,5 +81,21 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImageLanding() {
+        return imageLanding;
+    }
+
+    public void setImageLanding(String imageLanding) {
+        this.imageLanding = imageLanding;
+    }
+
+    public String getImageOrder() {
+        return imageOrder;
+    }
+
+    public void setImageOrder(String imageOrder) {
+        this.imageOrder = imageOrder;
     }
 }

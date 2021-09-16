@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/catalog")
@@ -47,20 +46,23 @@ public class CatalogController {
 
         List<Product> productList = new ArrayList<>();
         createProductList(productList);
-
-        Product orderedProduct = dao.findByLabel(catalogForm.getProductName());
-        orderedProducts.add(orderedProduct);
-
-        session.setAttribute("ordered", orderedProducts);
-        session.setAttribute("totalInCart", orderedProducts.size());
-        model.addAttribute("catalogForm", new CatalogForm());
         model.addAttribute("products", productList);
 
+        Product orderedProduct = dao.findByLabel(catalogForm.getProductName());
+        for (int i = 0; i < catalogForm.getProductQuantity(); i++) {
+            orderedProducts.add(orderedProduct);
+        }
+        Set<Product> order = new HashSet<>(orderedProducts);
+
         //test
-        for (Product produit : orderedProducts) {
-            System.out.println(produit.getLabel());
+        for (Product product : order) {
+            System.out.println(product.getLabel());
+            System.out.println(Collections.frequency(orderedProducts, product));
         }
 
+        session.setAttribute("order", order);
+        session.setAttribute("totalInCart", orderedProducts.size());
+        model.addAttribute("catalogForm", new CatalogForm());
         return "catalogTemplate";
     }
 

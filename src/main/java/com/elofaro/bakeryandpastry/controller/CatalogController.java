@@ -2,7 +2,6 @@ package com.elofaro.bakeryandpastry.controller;
 
 import com.elofaro.bakeryandpastry.DAO.ProductDAO;
 import com.elofaro.bakeryandpastry.DTO.CatalogForm;
-import com.elofaro.bakeryandpastry.DTO.OrderDTO;
 import com.elofaro.bakeryandpastry.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/catalog")
@@ -54,11 +54,6 @@ public class CatalogController {
 
         for (int i = 0; i < orderedQuantity; i++) {
             orderedProducts.add(orderedProduct);
-        }
-
-        for (Product element :
-                orderedProducts) {
-            System.out.println(element.getLabel());
         }
 
         session.setAttribute("totalInCart", orderedProducts.size());

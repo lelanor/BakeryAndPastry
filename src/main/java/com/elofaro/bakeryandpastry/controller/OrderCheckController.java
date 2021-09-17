@@ -20,13 +20,18 @@ public class OrderCheckController {
     public String showOrder(Model model, HttpSession session) {
         List<Product> unsortedList = (List<Product>) session.getAttribute("orderedProducts");
         Set<Product> orderedProducts = new HashSet<>(unsortedList);
+        double totalOrder = 0;
         for (Product element :
                 orderedProducts) {
             order.add(new OrderDTO(element, Collections.frequency(unsortedList, element)));
         }
-
+        for (OrderDTO element :
+                order) {
+            totalOrder += element.totalAmount();
+        }
 
         session.setAttribute("order", order);
+        session.setAttribute("total", totalOrder);
         return "orderCheckTemplate";
     }
 }

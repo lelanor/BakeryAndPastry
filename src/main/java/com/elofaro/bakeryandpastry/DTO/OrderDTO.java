@@ -16,4 +16,8 @@ public class OrderDTO {
         this.product = product;
         this.quantity = quantity;
     }
+
+    public double totalAmount(){
+        return product.getPrice()*quantity;
+    }
 }

@@ -2,6 +2,7 @@ package com.elofaro.bakeryandpastry.controller;
 
 import com.elofaro.bakeryandpastry.DAO.ProductDAO;
 import com.elofaro.bakeryandpastry.DTO.CatalogForm;
+import com.elofaro.bakeryandpastry.DTO.OrderDTO;
 import com.elofaro.bakeryandpastry.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,10 @@ public class CatalogController {
 
     private ProductDAO dao;
     private List<Product> orderedProducts = new ArrayList<>();
+
     public CatalogController(@Autowired ProductDAO dao) {
         this.dao = dao;
     }
-
 
 
     @GetMapping
@@ -49,19 +50,19 @@ public class CatalogController {
         model.addAttribute("products", productList);
 
         Product orderedProduct = dao.findByLabel(catalogForm.getProductName());
-        for (int i = 0; i < catalogForm.getProductQuantity(); i++) {
+        Integer orderedQuantity = catalogForm.getProductQuantity();
+
+        for (int i = 0; i < orderedQuantity; i++) {
             orderedProducts.add(orderedProduct);
         }
-        Set<Product> order = new HashSet<>(orderedProducts);
 
-        //test
-        for (Product product : order) {
-            System.out.println(product.getLabel());
-            System.out.println(Collections.frequency(orderedProducts, product));
+        for (Product element :
+                orderedProducts) {
+            System.out.println(element.getLabel());
         }
 
-        session.setAttribute("order", order);
         session.setAttribute("totalInCart", orderedProducts.size());
+        session.setAttribute("orderedProducts", orderedProducts);
         model.addAttribute("catalogForm", new CatalogForm());
         return "catalogTemplate";
     }

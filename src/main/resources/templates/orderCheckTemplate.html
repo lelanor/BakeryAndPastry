@@ -73,10 +73,10 @@
         <p class="navbar-brand">Quantity</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand">Price</p>
+        <p class="navbar-brand" align="right">Price</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand">Total</p>
+        <p class="navbar-brand" align="right">Total</p>
     </div>
 </div>
 <div th:each="element : ${session.order}" class="row" style="padding-top: 3px">
@@ -88,13 +88,13 @@
         <p class="navbar-brand" th:text="${element.product.label}">label</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand" th:text="${element.quantity}">label</p>
+        <p class="navbar-brand" align="center" th:text="${element.quantity}">label</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand" th:text="${element.product.price}">label</p>
+        <p class="navbar-brand" align="right" th:text="${element.product.price}">label</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand" th:text="${element.totalAmount()}">label</p>
+        <p class="navbar-brand" align="right" th:text="${element.totalAmount()}">label</p>
     </div>
 </div>
 <div class="row navbar-brand">
@@ -102,7 +102,7 @@
         <p class="navbar-brand">Total</p>
     </div>
     <div class="col-1">
-        <p class="navbar-brand" th:text="${session.total}">totalAmount</p>
+        <p class="navbar-brand" align="right" th:text="${session.total}">totalAmount</p>
     </div>
 </div>
 <div style="padding: 10px">

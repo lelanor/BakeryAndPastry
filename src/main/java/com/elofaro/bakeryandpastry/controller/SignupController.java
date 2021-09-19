@@ -29,7 +29,7 @@ public class SignupController {
         } else return "signupTemplate";
 
         Account account = new Account(signupDTO.getEmail(), password);
-        return "";
+        return "landingTemplate";
     }
 
     private String encrypt(String clearPassword){

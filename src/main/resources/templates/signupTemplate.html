@@ -23,10 +23,14 @@
 <body>
 <div th:insert="~{commons::menu}"></div>
 <div th:insert="~{commons::header}"></div>
-
+<!-- Title of the order-->
+<div style="padding: 10px">
+    <div class="col-3" align="right">
+        <h2 class="navbar-brand">Create an account</h2>
+    </div>
+</div>
 <div class="container col-md-8 mb-4">
     <div class="mb-4">
-        <h5 class="mb-0 navbar-brand" style="padding-top: 15px; padding-bottom: 30px">Your address</h5>
         <div>
             <form method="post" action="signup" th:action="@{/signup}">
                 
@@ -52,25 +56,40 @@
                     <label class="form-label" for="form6Example6">Email</label>
                 </div>
                 
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="password" class="form-control"/>
+                    <label class="form-label" for="password">Password</label>
+                </div>
+                
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="confirmation" class="form-control"/>
+                    <label class="form-label" for="confirmation">Confirm your password</label>
+                </div>
+                
                 <!-- Text input -->
                 <div class="form-outline mb-4">
                     <input type="text" id="form6Example4" class="form-control"/>
                     <label class="form-label" for="form6Example4">Address</label>
                 </div>
-            <div class="row">
-                <div class="col-11" align="right">
-                    <button type="reset" class="btn btn-outline-dark">
-                        Cancel
-                    </button>
+                <div class="row">
+                    <div class="col-10" align="right">
+                        <button type="submit" formaction="home" th:formaction="@{/}" class="btn btn-outline-dark">
+                            Home
+                        </button>
+                    </div>
+                    <div class="col-1" align="right">
+                        <button type="reset" class="btn btn-outline-dark">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-1" align="right">
+                        <button type="submit" class="btn btn-outline-dark">
+                            Submit
+                        </button>
+                    </div>
                 </div>
-                <div class="col-1">
-                    <button type="submit" class="btn btn-outline-dark">
-                        Submit
-                    </button>
-                </div>
-                
-            </div>
-            
             </form>
         </div>
     </div>

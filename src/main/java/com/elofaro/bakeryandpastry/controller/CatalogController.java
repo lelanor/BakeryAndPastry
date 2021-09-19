@@ -14,46 +14,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 @Controller
 @RequestMapping(value = "/catalog")
 public class CatalogController {
 
     private ProductDAO dao;
-    private List<Product> orderedProducts = new ArrayList<>();
 
     public CatalogController(@Autowired ProductDAO dao) {
         this.dao = dao;
     }
 
-
     @GetMapping
     public String catalogDisplay(Model model) {
-        List<Product> productList = new ArrayList<>();
-        createProductList(productList);
-        model.addAttribute("products", productList);
+        List<Product> products = createProductList();
+        model.addAttribute("products", products);
         model.addAttribute("catalogForm", new CatalogForm());
         return "catalogTemplate";
     }
 
-    private void createProductList(List<Product> productList) {
-        for (Product product : dao.findAll()) {
-            productList.add(product);
-        }
+    private List<Product> createProductList() {
+        List<Product> productList = new ArrayList<>();
+        dao.findAll().forEach(productList::add);
+        return productList;
     }
 
     @PostMapping
     public String CartUpdate(@ModelAttribute CatalogForm catalogForm, Model model, HttpSession session) {
 
-        List<Product> productList = new ArrayList<>();
-        createProductList(productList);
+        List<Product> productList = createProductList();
         model.addAttribute("products", productList);
 
-        Product orderedProduct = dao.findByLabel(catalogForm.getProductName());
-        Integer orderedQuantity = catalogForm.getProductQuantity();
+        List<String> orderedProducts = getProductsFromSession(session);
 
-        for (int i = 0; i < orderedQuantity; i++) {
-            orderedProducts.add(orderedProduct);
+        for (int i = 0; i < catalogForm.getProductQuantity(); i++) {
+            orderedProducts.add(catalogForm.getProductName());
         }
 
         session.setAttribute("totalInCart", orderedProducts.size());
@@ -62,4 +58,11 @@ public class CatalogController {
         return "catalogTemplate";
     }
 
+    private List<String> getProductsFromSession(HttpSession session) {
+        List<String> result = (ArrayList<String>) (session.getAttribute("orderedProducts"));
+        if(result == null) {
+            result = new ArrayList<>();
+        }
+        return result;
+    }
 }

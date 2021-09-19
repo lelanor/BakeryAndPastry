@@ -25,15 +25,18 @@ public class LandingController {
     @GetMapping
     public String displayIndex(Model model, HttpSession session) {
 
-        session.invalidate();
-
-        List<Product> productList = new ArrayList<>();
-        for (Product product : dao.findAll()) {
-            productList.add(product);
+        if(!session.isNew()) {
+            session.invalidate();
         }
 
-        model.addAttribute("products", productList);
-
+        List<Product> products = getProducts();
+        model.addAttribute("products", products);
         return "landingTemplate";
+    }
+
+    private List<Product> getProducts(){
+        List<Product> result = new ArrayList<>();
+        dao.findAll().forEach(result::add);
+        return result;
     }
 }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>B&P - Delivery address</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" th:href="@{assets/favicon.ico}"/>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" media="all"/>
+</head>
+
+<body>
+<div th:insert="~{commons::menu}"></div>
+<div th:insert="~{commons::header}"></div>
+
+<div class="container col-md-8 mb-4">
+    <div class="mb-4">
+        <h5 class="mb-0 navbar-brand" style="padding-top: 15px; padding-bottom: 30px">Your address</h5>
+        <div>
+            <form method="post" action="signup" th:action="@{/signup}">
+                
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example1" class="form-control"/>
+                            <label class="form-label" for="form6Example1">First name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form6Example2" class="form-control"/>
+                            <label class="form-label" for="form6Example2">Last name</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" id="form6Example6" class="form-control"/>
+                    <label class="form-label" for="form6Example6">Email</label>
+                </div>
+                
+                <!-- Text input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="form6Example4" class="form-control"/>
+                    <label class="form-label" for="form6Example4">Address</label>
+                </div>
+            <div class="row">
+                <div class="col-11" align="right">
+                    <button type="reset" class="btn btn-outline-dark">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-outline-dark">
+                        Submit
+                    </button>
+                </div>
+                
+            </div>
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{commons::footer}"></div>
+<div th:insert="~{commons::scripts}"></div>
+
+</body>
+</html>

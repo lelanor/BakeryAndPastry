@@ -1,7 +1,7 @@
 package com.elofaro.bakeryandpastry.controller;
 
 import com.elofaro.bakeryandpastry.DAO.ProductDAO;
-import com.elofaro.bakeryandpastry.DTO.CatalogForm;
+import com.elofaro.bakeryandpastry.DTO.CatalogDTO;
 import com.elofaro.bakeryandpastry.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Controller
 @RequestMapping(value = "/catalog")
@@ -30,7 +29,7 @@ public class CatalogController {
     public String catalogDisplay(Model model) {
         List<Product> products = createProductList();
         model.addAttribute("products", products);
-        model.addAttribute("catalogForm", new CatalogForm());
+        model.addAttribute("catalogForm", new CatalogDTO());
         return "catalogTemplate";
     }
 
@@ -41,7 +40,7 @@ public class CatalogController {
     }
 
     @PostMapping
-    public String CartUpdate(@ModelAttribute CatalogForm catalogForm, Model model, HttpSession session) {
+    public String CartUpdate(@ModelAttribute CatalogDTO catalogForm, Model model, HttpSession session) {
 
         List<Product> productList = createProductList();
         model.addAttribute("products", productList);
@@ -54,7 +53,7 @@ public class CatalogController {
 
         session.setAttribute("totalInCart", orderedProducts.size());
         session.setAttribute("orderedProducts", orderedProducts);
-        model.addAttribute("catalogForm", new CatalogForm());
+        model.addAttribute("catalogForm", new CatalogDTO());
         return "catalogTemplate";
     }
 

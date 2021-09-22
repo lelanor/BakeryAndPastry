@@ -6,6 +6,7 @@ import com.elofaro.bakeryandpastry.DTO.SignupDTO;
 import com.elofaro.bakeryandpastry.model.Account;
 import com.elofaro.bakeryandpastry.model.CustomerDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +22,13 @@ public class SignupController {
 
     AccountDAO accountDAO;
     CustomerDetailDAO customerDetailDAO;
+    PasswordEncoder passwordEncoder;
 
-    public SignupController(@Autowired AccountDAO accountDAO, @Autowired CustomerDetailDAO customerDetailDAO){
+    public SignupController(@Autowired AccountDAO accountDAO, @Autowired CustomerDetailDAO customerDetailDAO,
+                            @Autowired PasswordEncoder passwordEncoder) {
         this.accountDAO = accountDAO;
         this.customerDetailDAO = customerDetailDAO;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
@@ -34,31 +38,27 @@ public class SignupController {
     }
 
     @PostMapping
-    public String processSignupForm(@ModelAttribute SignupDTO signupDTO, Model model, HttpSession session) {
-        /*String password;
-        if (check(signupDTO.getPassword())) {
-            password = encrypt(signupDTO.getPassword());
-        } else return "signupTemplate";*/
-
+    public String processSignupForm(@ModelAttribute SignupDTO signupDTO, HttpSession session) {
         saveInDatabase(signupDTO);
-
+        saveInSession(signupDTO, session);
         return "landingTemplate";
     }
 
+    private void saveInSession(SignupDTO signupDTO, HttpSession session) {
+        session.setAttribute("email", signupDTO.getEmail());
+        session.setAttribute("firstname", signupDTO.getFirstname());
+        session.setAttribute("lastname", signupDTO.getLastname());
+        session.setAttribute("address", signupDTO.getAddress());
+    }
+
     private void saveInDatabase(SignupDTO signupDTO) {
-        Account account = new Account(signupDTO.getEmail(), signupDTO.getPassword());
+        Account account = new Account(signupDTO.getEmail(), encryptPassword(signupDTO.getPassword()));
         accountDAO.save(account);
         CustomerDetail customerDetail = new CustomerDetail(signupDTO.getFirstname(), signupDTO.getLastname(), signupDTO.getAddress());
         customerDetailDAO.save(customerDetail);
     }
 
-    private String encrypt(String clearPassword){
-        String result = null;
-
-        return result;
-    }
-
-    private boolean check(String password){
-        return true;
+    private String encryptPassword(String passwordToEncrypt) {
+        return passwordEncoder.encode(passwordToEncrypt);
     }
 }

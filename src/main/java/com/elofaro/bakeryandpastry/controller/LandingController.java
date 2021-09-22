@@ -26,7 +26,7 @@ public class LandingController {
     public String displayIndex(Model model, HttpSession session) {
 
         if(!session.isNew()) {
-            session.invalidate();
+            session.removeAttribute("order");
         }
 
         List<Product> products = getProducts();

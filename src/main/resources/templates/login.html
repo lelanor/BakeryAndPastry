@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>B&P - login</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" th:href="@{assets/favicon.ico}"/>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" media="all"/>
+</head>
+<body>
+<!-- Navigation-->
+<div th:insert="~{commons::menu}"></div>
+<!-- Header-->
+<div th:insert="~{commons::header}"></div>
+<!-- Section-->
+<section class="py-5 container">
+    <div class="col-md-4 mb-4">
+        <div class="mb-4">
+            <h5 class="mb-0 navbar-brand" style="padding-top: 15px; padding-bottom: 30px">Your address</h5>
+            <div>
+                <form>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email" class="form-control"/>
+                        <label class="form-label" for="email">Email</label>
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="password" class="form-control"/>
+                        <label class="form-label" for="password">Password</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+                <!--<div class="container px-4 px-lg-5 mt-5">
+                    
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        <div th:each="product : ${products}">
+                            &lt;!&ndash; Product for loop &ndash;&gt;
+                            <img class="card-img-top" src="image of the product"
+                                 th:src="@{${product.imageLanding}}"/>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    &lt;!&ndash; Product name&ndash;&gt;
+                                    <h5 class="fw-bolder" th:text="${{product.label}}">Label of product</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+</section>
+
+<!-- Footer-->
+<div th:insert="~{commons::footer}"></div>
+<!-- Scripts -->
+<div th:insert="~{commons::scripts}"></div>
+</body>
+</html>
+
+

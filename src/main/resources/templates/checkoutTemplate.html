@@ -41,7 +41,7 @@
                         </div>
                         <div class="col">
                             <div class="form-outline">
-                                <input type="text" id="lastname" th:placeholder="${dto.getLastname()}" class="form-control"/>
+                                <input type="text" id="lastname" th:value="${dto.getLastname()}" class="form-control"/>
                                 <label class="form-label" for="lastname">Last name</label>
                             </div>
                         </div>
@@ -49,13 +49,13 @@
                     
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="email" id="email" th:placeholder="${dto.getEmail()}" class="form-control"/>
+                        <input type="email" id="email" th:value="${dto.getEmail()}" class="form-control"/>
                         <label class="form-label" for="email">Email</label>
                     </div>
     
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                        <input type="text" id="address" th:placeholder="${dto.getAddress()}" class="form-control"/>
+                        <input type="text" id="address" th:value="${dto.getAddress()}" class="form-control"/>
                         <label class="form-label" for="address">Address</label>
                     </div>
                     
@@ -90,7 +90,7 @@
                         <span th:text="${session.total}"><strong>total</strong></span>
                     </li>
                 </ul>
-                <form method="post" action="payement" th:action="@{#}">
+                <form method="get" action="payement" th:action="@{/about}">
                     <input type="radio" value="PayPal" id="paypal">
                     <label for="paypal">PayPal</label>
                     <br>

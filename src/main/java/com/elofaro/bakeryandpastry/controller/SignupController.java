@@ -40,6 +40,7 @@ public class SignupController {
     @PostMapping
     public String processSignupForm(@ModelAttribute SignupDTO signupDTO, HttpSession session) {
         saveInDatabase(signupDTO);
+
         saveInSession(signupDTO, session);
         return "landingTemplate";
     }
